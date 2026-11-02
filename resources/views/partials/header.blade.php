@@ -61,14 +61,6 @@
                     </li>
                 </ul>
 
-                <!-- Search Bar -->
-                <form action="{{ route('shop') }}" method="GET" class="d-flex align-items-center me-3 mb-2 mb-lg-0 search-form position-relative">
-                    <input type="text" name="search" class="form-control cosmic-input pe-5" placeholder="Search cosmic items..." value="{{ request('search') }}" style="border-radius: 20px; font-size: 0.88rem; width: 220px;">
-                    <button type="submit" class="btn position-absolute end-0 top-50 translate-middle-y text-gold me-1" style="border:none; background:transparent;">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </form>
-
                 <!-- Actions: Wishlist, Cart, User -->
                 <div class="d-flex align-items-center gap-3">
                     <!-- Wishlist Icon -->
