@@ -23,7 +23,7 @@
             <i class="bi bi-grid-1x2-fill"></i>
             <span>Dashboard</span>
         </a>
-        <a href="{{ route('user.orders.index') }}" class="user-nav-link {{ request()->routeIs('user.orders*') ? 'active' : '' }}">
+        <a href="{{ route('user.orders') }}" class="user-nav-link {{ request()->routeIs('user.orders*') ? 'active' : '' }}">
             <i class="bi bi-box-seam-fill"></i>
             <span>My Orders & Consults</span>
         </a>
