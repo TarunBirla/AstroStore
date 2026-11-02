@@ -3,99 +3,101 @@
 @section('title', setting('site_name', 'AstroStore') . ' | Vedic Astrological Sanctuary & Certified Remedies')
 
 @section('content')
-<!-- Hero Slider -->
+<!-- Hero Slider (Seamless Full-Width Container) -->
 <section class="hero-slider-section mb-5 position-relative">
-    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
-        <div class="carousel-indicators">
-            @foreach($sliders as $index => $slider)
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}" aria-label="Slide {{ $index + 1 }}"></button>
-            @endforeach
-        </div>
+    <div class="container-fluid px-0 px-md-3 pt-0 pt-md-3">
+        <div id="heroCarousel" class="carousel slide carousel-fade shadow-sm" data-bs-ride="carousel" data-bs-interval="6000" style="border-radius: var(--card-radius); overflow: hidden;">
+            <div class="carousel-indicators mb-3">
+                @foreach($sliders as $index => $slider)
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}" aria-label="Slide {{ $index + 1 }}" style="width: 10px; height: 10px; border-radius: 50%; margin: 0 5px;"></button>
+                @endforeach
+            </div>
 
-        <div class="carousel-inner" style="border-radius: var(--card-radius); overflow: hidden; max-height: 500px; box-shadow: var(--shadow-md);">
-            @foreach($sliders as $index => $slider)
-                <div class="carousel-item {{ $index === 0 ? 'active' : '' }} position-relative">
-                    <img src="{{ $slider->image }}" class="d-block w-100" alt="{{ $slider->title }}" style="object-fit: cover; height: 500px; filter: brightness(0.65);">
-                    <div class="carousel-caption text-start d-flex flex-column justify-content-center h-100" style="bottom: 0; left: 8%; right: 8%; max-width: 650px;">
-                        <span class="badge badge-gold mb-3 d-inline-block align-self-start">
-                            <i class="fa-solid fa-om me-1"></i> VEDIC CONSECRATION GUARANTEED
-                        </span>
-                        <h1 class="text-white display-5 fw-bold mb-3" data-aos="fade-up" data-aos-delay="100" style="text-shadow: 0 2px 8px rgba(0,0,0,0.5);">
-                            {{ $slider->title }}
-                        </h1>
-                        <p class="text-white mb-4" data-aos="fade-up" data-aos-delay="200" style="font-size: 1.05rem; line-height: 1.6; text-shadow: 0 1px 4px rgba(0,0,0,0.6); max-width: 540px;">
-                            {{ $slider->subtitle }}
-                        </p>
-                        @if($slider->button_link)
-                            <div data-aos="fade-up" data-aos-delay="300" class="d-flex flex-wrap gap-2">
-                                <a href="{{ url($slider->button_link) }}" class="btn btn-cosmic-gold btn-lg">
-                                    {{ $slider->button_text ?: 'Explore Collection' }} <i class="fa-solid fa-arrow-right ms-2"></i>
-                                </a>
-                                <a href="{{ route('shop') }}" class="btn btn-outline-light btn-lg">
-                                    View Products
-                                </a>
-                            </div>
-                        @endif
+            <div class="carousel-inner" style="max-height: 520px;">
+                @foreach($sliders as $index => $slider)
+                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }} position-relative">
+                        <img src="{{ $slider->image }}" class="d-block w-100" alt="{{ $slider->title }}" style="object-fit: cover; height: 500px; filter: brightness(0.62);">
+                        <div class="carousel-caption text-start d-flex flex-column justify-content-center h-100" style="bottom: 0; left: 8%; right: 8%; max-width: 620px;">
+                            <span class="badge badge-gold mb-3 d-inline-block align-self-start" data-aos="fade-down">
+                                <i class="fa-solid fa-om me-1"></i> VEDIC CONSECRATION GUARANTEED
+                            </span>
+                            <h1 class="text-white display-5 fw-bold mb-3" data-aos="fade-up" data-aos-delay="100" style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                                {{ $slider->title }}
+                            </h1>
+                            <p class="text-white mb-4" data-aos="fade-up" data-aos-delay="200" style="font-size: 1.05rem; line-height: 1.6; text-shadow: 0 1px 4px rgba(0,0,0,0.6); max-width: 520px;">
+                                {{ $slider->subtitle }}
+                            </p>
+                            @if($slider->button_link)
+                                <div data-aos="fade-up" data-aos-delay="300" class="d-flex flex-wrap gap-2">
+                                    <a href="{{ url($slider->button_link) }}" class="btn btn-cosmic-gold btn-lg">
+                                        {{ $slider->button_text ?: 'Explore Collection' }} <i class="fa-solid fa-arrow-right ms-2"></i>
+                                    </a>
+                                    <a href="{{ route('shop') }}" class="btn btn-outline-light btn-lg">
+                                        View Products
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon p-3 rounded-circle" style="background-color: rgba(26,26,26,0.6);" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon p-3 rounded-circle" style="background-color: rgba(26,26,26,0.6);" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon p-3 rounded-circle" style="background-color: rgba(26,26,26,0.6);" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon p-3 rounded-circle" style="background-color: rgba(26,26,26,0.6);" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </div>
 </section>
 
 <!-- Feature Badges -->
 <section class="container mb-5">
-    <div class="row g-4">
-        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="cosmic-card p-4 d-flex align-items-center gap-3 h-100">
+    <div class="row g-3 g-md-4">
+        <div class="col-lg-3 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="cosmic-card p-3 p-md-4 d-flex align-items-center gap-3 h-100">
                 <div class="rounded-circle d-flex align-items-center justify-content-center text-primary fs-4 flex-shrink-0" style="width: 50px; height: 50px; background: var(--accent-light);">
                     <i class="fa-solid fa-certificate" style="color: var(--accent);"></i>
                 </div>
                 <div>
-                    <h6 class="mb-1" style="font-weight: 600;">100% Gov-Lab Certified</h6>
-                    <small class="text-muted">Authentic test report included</small>
+                    <h6 class="mb-1" style="font-weight: 600;">100% Lab Certified</h6>
+                    <small class="text-muted">Authentic test report with every gem</small>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="cosmic-card p-4 d-flex align-items-center gap-3 h-100">
+        <div class="col-lg-3 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="cosmic-card p-3 p-md-4 d-flex align-items-center gap-3 h-100">
                 <div class="rounded-circle d-flex align-items-center justify-content-center fs-4 flex-shrink-0" style="width: 50px; height: 50px; background: #fef3c7;">
                     <i class="fa-solid fa-fire-flame-curved" style="color: #b45309;"></i>
                 </div>
                 <div>
-                    <h6 class="mb-1" style="font-weight: 600;">Prana Pratishtha Siddh</h6>
-                    <small class="text-muted">Energized at Varanasi</small>
+                    <h6 class="mb-1" style="font-weight: 600;">Prana Pratishtha</h6>
+                    <small class="text-muted">Energized at Sacred Varanasi</small>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="cosmic-card p-4 d-flex align-items-center gap-3 h-100">
+        <div class="col-lg-3 col-sm-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="cosmic-card p-3 p-md-4 d-flex align-items-center gap-3 h-100">
                 <div class="rounded-circle d-flex align-items-center justify-content-center fs-4 flex-shrink-0" style="width: 50px; height: 50px; background: var(--accent-light);">
                     <i class="fa-solid fa-truck-fast" style="color: var(--accent);"></i>
                 </div>
                 <div>
-                    <h6 class="mb-1" style="font-weight: 600;">Free Insured Shipping</h6>
+                    <h6 class="mb-1" style="font-weight: 600;">Free Safe Shipping</h6>
                     <small class="text-muted">Free delivery above ₹{{ setting('free_shipping_above', 999) }}</small>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="cosmic-card p-4 d-flex align-items-center gap-3 h-100">
+        <div class="col-lg-3 col-sm-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="cosmic-card p-3 p-md-4 d-flex align-items-center gap-3 h-100">
                 <div class="rounded-circle d-flex align-items-center justify-content-center fs-4 flex-shrink-0" style="width: 50px; height: 50px; background: #fef3c7;">
                     <i class="fa-solid fa-user-tie" style="color: #b45309;"></i>
                 </div>
                 <div>
                     <h6 class="mb-1" style="font-weight: 600;">Jyotish Guidance</h6>
-                    <small class="text-muted">Consultation with scholars</small>
+                    <small class="text-muted">Direct consult with scholars</small>
                 </div>
             </div>
         </div>
@@ -131,7 +133,7 @@
 <!-- ABOUT US SECTION -->
 <section class="container mb-5">
     <div class="cosmic-card p-4 p-lg-5">
-        <div class="row align-items-center g-5">
+        <div class="row align-items-center g-4 g-lg-5">
             <div class="col-lg-6" data-aos="fade-right">
                 <span class="badge badge-gold mb-2"><i class="fa-solid fa-om me-1"></i> ABOUT OUR SANCTUARY</span>
                 <h2 class="display-6 fw-bold mb-3">Vedic Astrological Sanctuary & Purity Heritage</h2>
@@ -144,25 +146,25 @@
 
                 <!-- Statistics counter grid -->
                 <div class="row g-3 mt-3 pt-3" style="border-top: 1px solid var(--border-color);">
-                    <div class="col-sm-4 text-center text-sm-start">
-                        <div class="fs-2 fw-bold" style="color: var(--accent);">25,000+</div>
-                        <small class="text-muted">Happy Devotees</small>
+                    <div class="col-4 text-center text-sm-start">
+                        <div class="fs-2 fw-bold" style="color: var(--accent);">25k+</div>
+                        <small class="text-muted">Devotees</small>
                     </div>
-                    <div class="col-sm-4 text-center text-sm-start">
+                    <div class="col-4 text-center text-sm-start">
                         <div class="fs-2 fw-bold" style="color: #b45309;">100%</div>
-                        <small class="text-muted">Govt Lab Certified</small>
+                        <small class="text-muted">Lab Certified</small>
                     </div>
-                    <div class="col-sm-4 text-center text-sm-start">
-                        <div class="fs-2 fw-bold" style="color: var(--accent);">18+ Yrs</div>
-                        <small class="text-muted">Vedic Lineage</small>
+                    <div class="col-4 text-center text-sm-start">
+                        <div class="fs-2 fw-bold" style="color: var(--accent);">18+</div>
+                        <small class="text-muted">Years Lineage</small>
                     </div>
                 </div>
 
-                <div class="mt-4">
-                    <a href="{{ route('about') }}" class="btn btn-cosmic-gold me-3">
+                <div class="mt-4 pt-2">
+                    <a href="{{ route('about') }}" class="btn btn-cosmic-gold me-2 mb-2">
                         Read Our Story <i class="fa-solid fa-arrow-right ms-2"></i>
                     </a>
-                    <a href="{{ route('contact') }}" class="btn btn-cosmic-outline">
+                    <a href="{{ route('contact') }}" class="btn btn-cosmic-outline mb-2">
                         Speak to Acharya
                     </a>
                 </div>
@@ -195,7 +197,7 @@
     </div>
 
     <div class="row g-4">
-        <div class="col-md-3 text-center" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-3 col-sm-6 text-center" data-aos="fade-up" data-aos-delay="100">
             <div class="cosmic-card p-4 h-100">
                 <div class="mx-auto rounded-circle d-flex align-items-center justify-content-center fs-3 mb-3" style="width: 60px; height: 60px; background: var(--accent-light); color: var(--accent);">
                     <i class="fa-solid fa-microscope"></i>
@@ -207,7 +209,7 @@
             </div>
         </div>
 
-        <div class="col-md-3 text-center" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-3 col-sm-6 text-center" data-aos="fade-up" data-aos-delay="200">
             <div class="cosmic-card p-4 h-100">
                 <div class="mx-auto rounded-circle d-flex align-items-center justify-content-center fs-3 mb-3" style="width: 60px; height: 60px; background: #fef3c7; color: #b45309;">
                     <i class="fa-solid fa-water"></i>
@@ -219,7 +221,7 @@
             </div>
         </div>
 
-        <div class="col-md-3 text-center" data-aos="fade-up" data-aos-delay="300">
+        <div class="col-lg-3 col-sm-6 text-center" data-aos="fade-up" data-aos-delay="300">
             <div class="cosmic-card p-4 h-100">
                 <div class="mx-auto rounded-circle d-flex align-items-center justify-content-center fs-3 mb-3" style="width: 60px; height: 60px; background: var(--accent-light); color: var(--accent);">
                     <i class="fa-solid fa-fire-burner"></i>
@@ -231,7 +233,7 @@
             </div>
         </div>
 
-        <div class="col-md-3 text-center" data-aos="fade-up" data-aos-delay="400">
+        <div class="col-lg-3 col-sm-6 text-center" data-aos="fade-up" data-aos-delay="400">
             <div class="cosmic-card p-4 h-100">
                 <div class="mx-auto rounded-circle d-flex align-items-center justify-content-center fs-3 mb-3" style="width: 60px; height: 60px; background: #fef3c7; color: #b45309;">
                     <i class="fa-solid fa-box-archive"></i>
@@ -420,7 +422,7 @@
 
 <!-- CALL TO ACTION BANNER -->
 <section class="container mb-5" data-aos="fade-up">
-    <div class="p-5 text-center rounded-3 shadow-sm" style="background: var(--bg-soft-gray); border: 1px solid var(--border-color);">
+    <div class="p-4 p-md-5 text-center rounded-3 shadow-sm" style="background: var(--bg-soft-gray); border: 1px solid var(--border-color);">
         <span class="badge badge-gold mb-3"><i class="fa-solid fa-om me-1"></i> START YOUR SPIRITUAL JOURNEY</span>
         <h2 class="display-6 fw-bold mb-3">Discover the Power of Genuine Vedic Remedies</h2>
         <p class="text-muted fs-5 mb-4" style="max-width: 600px; margin: 0 auto;">Explore lab-certified natural gemstones, original Nepal Rudraksha, energized Yantras, or book your personalized Kundli consultation today.</p>

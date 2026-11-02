@@ -35,7 +35,7 @@
 
     @include('partials.header')
 
-    <main class="py-4 flex-grow-1">
+    <main class="flex-grow-1">
         <div class="container">
             @include('partials.alerts')
         </div>
